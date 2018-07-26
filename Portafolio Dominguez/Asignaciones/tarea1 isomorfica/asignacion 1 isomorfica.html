@@ -1,0 +1,129 @@
+<html lang="en"><head>
+    <head>
+        <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="./css/bootstrap.css"><title>Cadenas isomorficas</title>
+    <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <body>
+        
+        <!-- As a link -->
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Tarea: Cadenas isomorficas</a>
+    </nav>
+    
+    
+    <center> <h1> Cadenas isomorficas </h1></center>
+    
+        <div class="container">
+            <div class="row">
+        <div class="col-sm-2">         
+        </div>   
+            
+            
+<div class="col-sm-8">
+     <fieldset>          
+        <div class="card-body"></div>
+        <label >Cadena 1</label>
+        <input type="text" id="strg1" class="form-control" pattern="[A-Za-z]+" placeholder="Cadena 1" required="" autofocus="">
+        <br>
+        <label >Cadena 2</label>
+        <input type="text" id="strg2" class="form-control" pattern="[A-Za-z]+" placeholder="Cadena 2" required="">
+        <br>
+        <button onclick="myFunction()" class="btn btn-default" id="comprobar" data-toggle="modal" data-target="#myModal" >Comprobar</button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                                <h4 class="modal-title" id="myModal-label">Resultado</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="mbody"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        var res = "";
+        function myFunction(){
+            var fknboo = true;
+            if(document.getElementById("strg1").value == ""){ 
+                res = "Error cadena 1 esta vacia";
+                $(".myModal").modal("show");
+                $(".mbody").html(res);
+            }
+            else if (document.getElementById("strg2").value == ""){ 
+                    res = "Error cadena 2 esta vacia";
+                    $(".myModal").modal("show");
+                    $(".mbody").html(res);
+            }
+            else{
+                if (!document.getElementById('strg1').checkValidity() || !document.getElementById('strg2').checkValidity()){
+                    res = "Solo se permiten letras";
+                    $(".myModal").modal("show");
+                    $(".mbody").html(res);
+                }
+                else {
+                    var str1 = document.getElementById("strg1").value;
+                    var str2 = document.getElementById("strg2").value;
+                    var len1 = str1.length; 
+                    if (len1 != str2.length) {
+                        res = "Las cadenas tienen diferentes longuitudes";
+                        $(".myModal").modal("show");
+                        $(".mbody").html(res);
+                    }
+                    else{
+                        var chMap = {};
+                        for (var i = 0; i < len1; i++) {
+                            if (!chMap[str1[i]]) {
+                                chMap[str1[i]] = str2[i];                                        
+                            } 
+                            else if (chMap[str1[i]] !== str2[i]) {
+                                fknboo=false;
+                                res = "Las cadenas difieren en el elemento " + (i+1);
+                                $(".myModal").modal("show");
+                                $(".mbody").html(res);
+                            }
+                        }
+                        if (fknboo){
+                            res = "Las cadenas son isomorficas";
+                            $(".myModal").modal("show");
+                            $(".mbody").html(res);
+                        } 
+                    }
+                }
+                    
+            }
+        }
+
+                    
+        </script>  
+    </fieldset>
+</div>
+          
+          
+     <div class="col-sm-2">         
+        </div>
+    
+         
+            </div>
+        </div> <!-- /container -->
+        
+    
+    
+    
+       
+      <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     -->
+     <script src="./jquery/jquery-3.3.1.min.js"></script>
+     <script src="./js/bootstrap.min.js"></script>
+    </body>
+</html>
